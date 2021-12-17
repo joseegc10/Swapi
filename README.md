@@ -1,6 +1,6 @@
 # Swapi
 
-App destinada a la consumición de datos desde la API denominada Swapi. 
+App destinada a la consumición de datos desde la API denominada Swapi, realizada con el framework SwiftUI y con el patrón de diseño MVVM. 
 
 Contiene dos apartados:
 
