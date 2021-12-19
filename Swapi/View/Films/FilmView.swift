@@ -10,7 +10,7 @@ import SwiftUI
 /// Vista de la información completa de una película, incluyendo sus personajes
 struct FilmView: View {
     let film: Film
-    @StateObject var infoPeople = PeopleViewModel()
+    @EnvironmentObject var infoPeople: PeopleViewModel
     
     @FetchRequest(entity: PersonCD.entity(), sortDescriptors: [], animation: .spring())
     var peopleCD: FetchedResults<PersonCD>
@@ -33,8 +33,8 @@ struct FilmView: View {
                         .padding()
                     
                     if let peopleFilm = infoPeople.peopleByFilm[film.episode_id], !peopleFilm.isEmpty {
-                        ForEach(peopleFilm, id: \.self) { person in
-                            NavigationLink(destination: PersonView(person: person, infoPeople: infoPeople)) {
+                        ForEach(peopleFilm, id: \.self.url) { person in
+                            NavigationLink(destination: PersonView(person: person)) {
                                 PersonCardView(person: person)
                             }
                             

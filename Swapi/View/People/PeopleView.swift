@@ -9,7 +9,7 @@ import SwiftUI
 
 /// Vista del conjunto de personajes de Swapi
 struct PeopleView: View {
-    @StateObject var infoPeople = PeopleViewModel()
+    @EnvironmentObject var infoPeople: PeopleViewModel
     
     @FetchRequest(entity: PersonCD.entity(), sortDescriptors: [], animation: .spring())
     var peopleCD: FetchedResults<PersonCD>
@@ -27,8 +27,8 @@ struct PeopleView: View {
                 } else {
                     ScrollView {
                         VStack(alignment: .leading) {
-                            ForEach(infoPeople.people, id: \.self) { person in
-                                NavigationLink(destination: PersonView(person: person, infoPeople: infoPeople)) {
+                            ForEach(infoPeople.people, id: \.self.url) { person in
+                                NavigationLink(destination: PersonView(person: person)) {
                                     PersonCardView(person: person)
                                 }
                                 

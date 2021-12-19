@@ -13,7 +13,7 @@ struct PersonView: View {
     
     @State private var editing = false
     
-    @StateObject var infoPeople: PeopleViewModel
+    @EnvironmentObject var infoPeople: PeopleViewModel
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -116,8 +116,9 @@ struct PersonView: View {
                     
                     Button(action:{
                         if editing {
-                            infoPeople.updatePeopleCD(newPeopleCD: peopleCD)
+                            print("hola: " + String(infoPeople.people.count))
                             infoPeople.saveInfoPerson(context: viewContext, newInfoPerson: person)
+                            infoPeople.updatePeopleCD(newPeopleCD: peopleCD)
                         }
                         
                         editing.toggle()

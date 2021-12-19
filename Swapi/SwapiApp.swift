@@ -10,11 +10,14 @@ import SwiftUI
 @main
 struct SwapiApp: App {
     let persistenceController = PersistenceController.shared
+    
+    var infoPeople = PeopleViewModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(infoPeople)
         }
     }
 }
