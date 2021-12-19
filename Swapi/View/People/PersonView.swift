@@ -116,7 +116,6 @@ struct PersonView: View {
                     
                     Button(action:{
                         if editing {
-                            print("hola: " + String(infoPeople.people.count))
                             infoPeople.saveInfoPerson(context: viewContext, newInfoPerson: person)
                             infoPeople.updatePeopleCD(newPeopleCD: peopleCD)
                         }
